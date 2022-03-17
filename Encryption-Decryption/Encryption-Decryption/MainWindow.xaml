@@ -127,5 +127,6 @@
                     NavigationUIVisibility="Hidden" Margin="0,40,0,0"
                     Source="Pages/Encrypt.xaml"/>
         </Grid>
+    <Grid>
     </Grid>
 </Window>
