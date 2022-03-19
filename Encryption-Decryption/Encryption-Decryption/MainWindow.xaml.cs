@@ -4,7 +4,6 @@ using EncryptionDecryption.Pages;
 
 namespace EncryptionDecryption
 {
-
     public partial class MainWindow : Window
     {
         public MainWindow()
@@ -26,5 +25,6 @@ namespace EncryptionDecryption
         private void BtnClose_Click(object sender, RoutedEventArgs e) => this.Close();
         private void Btnminimize_Click(object sender, RoutedEventArgs e) => WindowState = WindowState.Minimized;
         private void Grid_MouseLeftButtonDown(object sender, MouseButtonEventArgs e) => this.DragMove();
+
     }
 }
