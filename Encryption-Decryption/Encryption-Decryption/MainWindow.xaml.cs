@@ -26,5 +26,6 @@ namespace EncryptionDecryption
         private void Btnminimize_Click(object sender, RoutedEventArgs e) => WindowState = WindowState.Minimized;
         private void Grid_MouseLeftButtonDown(object sender, MouseButtonEventArgs e) => this.DragMove();
 
+        private void ListBoxItem_OnSelected(object sender, RoutedEventArgs e) => frMain.Content = new GenerateKeys();
     }
 }

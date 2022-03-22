@@ -3,20 +3,37 @@
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <RootNamespace>Encryption_Decryption</RootNamespace>
+    <RootNamespace>EncryptionDecryption</RootNamespace>
     <UseWPF>true</UseWPF>
+    <ApplicationIcon>Assets\Lock_font_awesome.svg.ico</ApplicationIcon>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <LangVersion>latest</LangVersion>
   </PropertyGroup>
 
   <ItemGroup>
     <None Remove="Assets\1200px-Hamburger_icon_white.svg.png" />
     <None Remove="Assets\Eye_Icon.svg.png" />
+    <None Remove="Assets\key.jpg" />
+    <None Remove="Assets\key.png" />
     <None Remove="Assets\Lock_font_awesome.svg.ico" />
     <None Remove="Assets\Lock_font_awesome.svg.png" />
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="Assets\Lock_font_awesome.svg.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Resource Include="Assets\1200px-Hamburger_icon_white.svg.png" />
     <Resource Include="Assets\Eye_Icon.svg.png" />
+    <Resource Include="Assets\key.jpg" />
+    <Resource Include="Assets\key.png" />
     <Resource Include="Assets\Lock_font_awesome.svg.ico" />
     <Resource Include="Assets\Lock_font_awesome.svg.png" />
   </ItemGroup>

@@ -110,6 +110,12 @@
                             <TextBlock Text="Decrypt" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="Gray" FontSize="20" Margin="25,0,0,0"/>
                         </StackPanel>
                     </ListViewItem>
+                    <ListViewItem HorizontalAlignment="Left" Margin="0,0,0,20" Height="50" Selected="ListBoxItem_OnSelected">
+                        <StackPanel Orientation="Horizontal" Width="230" Height="50">
+                            <Image Source="/Assets/key.jpg" Margin="5,0,0,0" Stretch="Fill" Height="30" MinHeight="30" MinWidth="50" Width="50"/>
+                            <TextBlock Text="Generate" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="Gray" FontSize="20" Margin="25,0,0,0"/>
+                        </StackPanel>
+                    </ListViewItem>
                 </ListView>
             </StackPanel>
         </Grid>
@@ -127,6 +133,5 @@
                     NavigationUIVisibility="Hidden" Margin="0,40,0,0"
                     Source="Pages/Encrypt.xaml"/>
         </Grid>
-    <Grid>
     </Grid>
 </Window>

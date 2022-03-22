@@ -1,25 +1,31 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+using EncryptionDecryption.Helper;
 
 namespace EncryptionDecryption.Pages
 {
-    /// <summary>
-    /// Interaction logic for Encrypt.xaml
-    /// </summary>
     public partial class Encrypt : Page
     {
+        byte[] selectedFile;
+        string plainText;
+        string encryptedData;
+
         public Encrypt()
         {
             InitializeComponent();
+        }
+
+        void btnFile_Click(object sender, RoutedEventArgs e)
+        {
+            EncryptionHelper.SelectFile(out selectedFile, out plainText);
+            txtPlain.Text = plainText;
+        }
+        void btnEncrypt_Click(object sender, RoutedEventArgs e)
+        {
+            string key;
+            EncryptionHelper.SelectKey(out key);
+            EncryptionHelper.EncryptFile(selectedFile, key,out encryptedData);
+            txtEncrypted.Text = encryptedData;
         }
     }
 }

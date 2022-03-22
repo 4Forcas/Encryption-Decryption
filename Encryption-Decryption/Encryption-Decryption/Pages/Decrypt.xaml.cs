@@ -1,25 +1,33 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+using EncryptionDecryption.Helper;
 
 namespace EncryptionDecryption.Pages
 {
-    /// <summary>
-    /// Interaction logic for Decrypt.xaml
-    /// </summary>
     public partial class Decrypt : Page
     {
+        public byte[] dataToDecrypt;
+        public string decryptedData;
+
         public Decrypt()
         {
             InitializeComponent();
         }
-    }
+
+        void btnDecrypt_Click(object sender, RoutedEventArgs e)
+        {
+            string key;
+            DecryptionHelper.SelectKey(out key);
+            DecryptionHelper.DecryptFile(dataToDecrypt, key, out decryptedData);
+            key = "";
+            txtDecrypted.Text = decryptedData;
+        }
+
+        void btnFile_Click(object sender, RoutedEventArgs e)
+        {
+            DecryptionHelper.SelectFile(out dataToDecrypt);
+            txtEncrypted.Text = String.Join("", dataToDecrypt);
+        }
+}
 }
