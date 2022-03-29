@@ -17,14 +17,16 @@ namespace EncryptionDecryption.Helper
             {
                 rsa.ImportRSAPrivateKey(Convert.FromBase64String(key), out int temp);
                 var decryptedData = rsa.Decrypt(data, false);
-                var ofd = new OpenFileDialog
+                var sfd = new SaveFileDialog()
                 {
                     CheckFileExists = false,
-                    FileName = "Location"
-                };
-                if (ofd.ShowDialog() == true)
+                    FileName = "Location",
+                    Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*",
+
+            };
+                if (sfd.ShowDialog() == true)
                 {
-                    string folderPath = Path.GetDirectoryName(ofd.FileName);
+                    string folderPath = Path.GetDirectoryName(sfd.FileName);
                     string file = Path.Combine(folderPath, "DecryptedData.txt");
                     using (var sw = File.CreateText(file))
                     {

@@ -37,10 +37,11 @@ namespace EncryptionDecryption.Helper
                 var encryptedData = rsa.Encrypt(dataToEncrypt, false);
                 var base64 = Convert.ToBase64String(encryptedData);
                 encryptedFile = base64;
-                var ofd = new OpenFileDialog
+                var ofd = new SaveFileDialog()
                 {
                     CheckFileExists = false,
-                    FileName = "Location"
+                    FileName = "EncryptedData",
+                    Filter = "XML files(.xml)|*.xml|all Files(*.*)|*.*",
                 };
                 if (ofd.ShowDialog() == true)
                 {

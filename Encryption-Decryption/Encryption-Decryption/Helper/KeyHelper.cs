@@ -18,14 +18,16 @@ namespace EncryptionDecryption.Helper
         {
             aPublicKey = "";
             aPrivateKey = "";
-            var ofd = new OpenFileDialog
+            var sfd = new SaveFileDialog()
             {
                 CheckFileExists = false,
-                FileName = "Location"
+                FileName = "Location",
+                Filter = "XML files(.xml)|*.xml|all Files(*.*)|*.*",
             };
-            if (ofd.ShowDialog() == true)
+
+            if (sfd.ShowDialog() == true)
             {
-                string folderPath = Path.GetDirectoryName(ofd.FileName);
+                string folderPath = Path.GetDirectoryName(sfd.FileName);
                 string publicKeyPath = Path.Combine(folderPath, "publicKey.xml");
                 string privateKeyPath = Path.Combine(folderPath, "privateKey.xml");
                 string publickey;
