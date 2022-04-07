@@ -30,6 +30,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Twileloop.ExpressSecurity" Version="1.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Resource Include="Assets\1200px-Hamburger_icon_white.svg.png" />
     <Resource Include="Assets\Eye_Icon.svg.png" />
     <Resource Include="Assets\key.jpg" />

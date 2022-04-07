@@ -1,0 +1,59 @@
+﻿<Page x:Class="EncryptionDecryption.Pages.GenerateKeys"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:EncryptionDecryption.Pages"
+      mc:Ignorable="d" 
+      Title="GenerateKeys" >
+    <Grid Background="#131415">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="150"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="15"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="15"/>
+            </Grid.ColumnDefinitions>
+            <Border CornerRadius="8" Grid.Column="1" Height="120" VerticalAlignment="Center" Background="#1c1d1f">
+                <StackPanel Margin="20">
+                    <TextBlock Foreground="White" Text="Decrypt"/>
+                    <Button x:Name="btnGenerateAES" Click="btnGenerate_Click">GenerateKeys</Button>
+                </StackPanel>
+            </Border>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="15"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="15"/>
+            </Grid.ColumnDefinitions>
+            <Border CornerRadius="8" Grid.Column="1"  VerticalAlignment="Stretch" Margin="0,20" Background="#1c1d1f">
+
+
+                <StackPanel Margin="20">
+                    <TextBlock Foreground="White" Text="Decrypt"/>
+                    <TextBlock Margin="0,10" Foreground="Gray" Text="Lorem Ipsum lorem ipsum lorem ipsum"/>
+                    <Grid Height="300">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <TextBlock x:Name="txtPublicKeyAES" TextWrapping="Wrap"  Margin="0,0,20,0"  Foreground="White"/>
+                        <TextBlock x:Name="txtPrivateKeyAES" TextWrapping="Wrap"  Grid.Column="1" Margin="20,0,0,0" Foreground="White"/>
+                    </Grid>
+                </StackPanel>
+
+
+            </Border>
+        </Grid>
+
+
+    </Grid>
+</Page>
