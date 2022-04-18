@@ -4,9 +4,9 @@ using EncryptionDecryption.Helper;
 
 namespace EncryptionDecryption.Pages
 {
-    public partial class GenerateKeys : Page
+    public partial class GenerateKeysAES : Page
     {
-        public GenerateKeys()
+        public GenerateKeysAES()
         {
             InitializeComponent();
         }
@@ -17,10 +17,8 @@ namespace EncryptionDecryption.Pages
             string privateKey;
 
             KeyHelper.SaveKeys(out publicKey, out privateKey);
-            txtPublicKey.Text = publicKey;
-            txtPrivateKey.Text = privateKey;
-
+            txtPublicKeyAES.Text = publicKey;
+            txtPrivateKeyAES.Text = privateKey;
         }
-
     }
 }

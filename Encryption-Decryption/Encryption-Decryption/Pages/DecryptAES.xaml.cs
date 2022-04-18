@@ -5,12 +5,13 @@ using EncryptionDecryption.Helper;
 
 namespace EncryptionDecryption.Pages
 {
-    public partial class Decrypt : Page
+    public partial class DecryptAES : Page
     {
         public byte[] dataToDecrypt;
         public string decryptedData;
 
-        public Decrypt()
+       
+        public DecryptAES()
         {
             InitializeComponent();
         }
@@ -21,13 +22,13 @@ namespace EncryptionDecryption.Pages
             DecryptionHelperAES.SelectKey(out key);
             DecryptionHelperAES.DecryptFile(dataToDecrypt, key, out decryptedData);
             key = "";
-            txtDecrypted.Text = decryptedData;
+            txtDecryptedAES.Text = decryptedData;
         }
 
         void btnFile_Click(object sender, RoutedEventArgs e)
         {
             DecryptionHelperAES.SelectFile(out dataToDecrypt);
-            txtEncrypted.Text = String.Join("", dataToDecrypt);
+            txtEncryptedAES.Text = String.Join("", dataToDecrypt);
         }
 }
 }

@@ -19,8 +19,6 @@ namespace EncryptionDecryption.Pages
             KeyHelper.SaveKeys(out publicKey, out privateKey);
             txtPublicKey.Text = publicKey;
             txtPrivateKey.Text = privateKey;
-
         }
-
     }
 }
