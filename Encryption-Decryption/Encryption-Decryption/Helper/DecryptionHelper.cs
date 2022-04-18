@@ -19,8 +19,9 @@ namespace EncryptionDecryption.Helper
                 var ofd = new OpenFileDialog
                 {
                     CheckFileExists = false,
-                    FileName = "Location"
-                };
+                    FileName = "Location",
+                    Filter = "txt files (*.txt)|*.txt"
+            };
                 if (ofd.ShowDialog() == true)
                 {
                     string folderPath = Path.GetDirectoryName(ofd.FileName);
@@ -41,6 +42,7 @@ namespace EncryptionDecryption.Helper
             var ofd = new OpenFileDialog
             {
                 InitialDirectory = @"C:\",
+                Filter = "txt files (*.txt)|*.txt"
             };
 
             if (ofd.ShowDialog() == true)
@@ -55,6 +57,7 @@ namespace EncryptionDecryption.Helper
             var ofd = new OpenFileDialog
             {
                 InitialDirectory = @"C:\",
+                Filter = "txt files (*.txt)|*.txt"
             };
             if (ofd.ShowDialog() == true)
                 using (var sr = new StreamReader(ofd.FileName))
