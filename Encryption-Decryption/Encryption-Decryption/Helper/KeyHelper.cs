@@ -21,7 +21,8 @@ namespace EncryptionDecryption.Helper
             var ofd = new OpenFileDialog
             {
                 CheckFileExists = false,
-                FileName = "Location"
+                FileName = "Location",
+                Filter = "txt files (*.txt)|*.txt"
             };
             if (ofd.ShowDialog() == true)
             {

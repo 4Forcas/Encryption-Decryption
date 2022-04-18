@@ -10,23 +10,21 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <Grid Grid.Row="0">
+        <Grid Grid.Row="0" Margin="0,0,0,419" Grid.RowSpan="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="15"/>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="15"/>
             </Grid.ColumnDefinitions>
             <Border CornerRadius="8" Grid.Column="1" Height="150" VerticalAlignment="Center" Background="#1c1d1f">
-                <StackPanel Margin="20">
+                <StackPanel Margin="20,20,20,0">
                     <TextBlock Foreground="White" Text="Generate AES Key"/>
-                    <StackPanel Orientation="Horizontal" Height="34" HorizontalAlignment="Left" Width="205" >
-                        <Button x:Name="btnFileAES" Height="20"  Width="205"  Click="btnFile_Click" Margin="0,0,20,0">Select File</Button>
-                 
+                    <StackPanel Orientation="Horizontal" Height="34" HorizontalAlignment="Left" Width="400" >
+                        <Button x:Name="btnFileAES" Height="20"   Width="400"  Click="btnFile_Click" Margin="0,0,20,0">Select File</Button>
                     </StackPanel>
-                    <StackPanel Height="57">
-                        <TextBox Text="Password" Height="24" x:Name="aesPswdBox" TextChanged="aesPswdBox_TextChanged"></TextBox>
-                        <Button x:Name="btnEncryptAES" Height="20"  Width="205"  Click="btnEncrypt_Click" Margin="0,5,0,0">Encrypt File</Button>
-                    </StackPanel>
+                    <Button Height="20"  Width="400" x:Name="GeneratePassword" HorizontalAlignment="Left" Click="GeneratePassword_Click" Margin="0,0,20,0">Generate Password</Button>
+                    <TextBox Width="400" Text="Password" Height="20" x:Name="aesPswdBox" HorizontalAlignment="Left" TextChanged="aesPswdBox_TextChanged"></TextBox>
+                    <Button x:Name="btnEncryptAES" Height="20"  HorizontalAlignment="Left"  Click="btnEncrypt_Click" Margin="0,5,0,0" Width="400">Encrypt File</Button>
                 </StackPanel>
             </Border>
         </Grid>
@@ -41,7 +39,7 @@
 
                 <StackPanel Margin="20">
                     <TextBlock Foreground="White" Text="Decrypt"/>
-                    <TextBlock Margin="0,10" Foreground="Gray" Text="Lorem Ipsum lorem ipsum lorem ipsum"/>
+
                     <Grid Height="300">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
@@ -50,8 +48,10 @@
                         <Grid.RowDefinitions>
                             <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
+                       
                         <TextBlock x:Name="txtPlainAES" TextWrapping="Wrap" Margin="0,0,20,0" Foreground="White">
                         </TextBlock>
+                 
                         <TextBlock x:Name="txtEncryptedAES" TextWrapping="Wrap" Grid.Column="1" Margin="20,0,0,0" Foreground="White">
                         </TextBlock>
                     </Grid>
@@ -60,7 +60,5 @@
 
             </Border>
         </Grid>
-
-
     </Grid>
 </Page>
