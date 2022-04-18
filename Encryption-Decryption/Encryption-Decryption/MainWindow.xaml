@@ -110,12 +110,25 @@
                             <TextBlock Text="Decrypt" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="Gray" FontSize="20" Margin="25,0,0,0"/>
                         </StackPanel>
                     </ListViewItem>
+                    <ListViewItem HorizontalAlignment="Left" Margin="0,0,0,20" Height="50" Selected="AESEncrypt_Clicked" >
+                        <StackPanel Orientation="Horizontal" Width="230" Height="50">
+                            <Image Source="/Assets/Lock_font_awesome.svg.png" Margin="5,0,0,0" Stretch="Fill" Width="50"/>
+                            <TextBlock Text="AESEncrypt" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="Gray" FontSize="20" Margin="25,0,0,0"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem HorizontalAlignment="Left" Margin="0,0,0,20" Height="50" Selected="AESDecrypt_Clicked">
+                        <StackPanel Orientation="Horizontal" Width="230" Height="50">
+                            <Image Source="/Assets/Eye_Icon.svg.png" Margin="5,0,0,0" Stretch="Fill" Height="30" Width="50"/>
+                            <TextBlock Text="AESDecrypt" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="Gray" FontSize="20" Margin="25,0,0,0"/>
+                        </StackPanel>
+                    </ListViewItem>
                     <ListViewItem HorizontalAlignment="Left" Margin="0,0,0,20" Height="50" Selected="ListBoxItem_OnSelected">
                         <StackPanel Orientation="Horizontal" Width="230" Height="50">
                             <Image Source="/Assets/key.jpg" Margin="5,0,0,0" Stretch="Fill" Height="30" MinHeight="30" MinWidth="50" Width="50"/>
                             <TextBlock Text="Generate" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="Gray" FontSize="20" Margin="25,0,0,0"/>
                         </StackPanel>
                     </ListViewItem>
+
                 </ListView>
             </StackPanel>
         </Grid>

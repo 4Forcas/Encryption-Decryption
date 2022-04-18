@@ -23,7 +23,7 @@ namespace EncryptionDecryption.Helper
                     FileName = "Location",
                     Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*",
 
-            };
+                };
                 if (sfd.ShowDialog() == true)
                 {
                     string folderPath = Path.GetDirectoryName(sfd.FileName);
@@ -63,6 +63,48 @@ namespace EncryptionDecryption.Helper
                 using (var sr = new StreamReader(ofd.FileName))
                     data = Convert.FromBase64String(sr.ReadLine());
             dataToConvert = data;
+        }
+
+        public static void AESDecryptFile(string password, string aFile)
+        {
+            var aes = new AesCryptoServiceProvider();
+            var x = Encoding.ASCII.GetBytes(password);
+            aes.IV = x;
+            aes.Key = x;
+            var decrypt = aes.CreateDecryptor(aes.Key, aes.IV);
+            var textbytes = Convert.FromBase64String(aFile);
+            var decrypted = decrypt.TransformFinalBlock(textbytes, 0, textbytes.Length);
+            var sfd = new SaveFileDialog()
+            {
+                FileName = "AESEncryptedData",
+            };
+            if (sfd.ShowDialog() == true)
+            {
+                string folderPath = Path.GetDirectoryName(sfd.FileName);
+                string file = Path.Combine(folderPath, "AesDecrypted.txt");
+
+                using (var sw = File.CreateText(file))
+                {
+
+                    sw.Write(Encoding.ASCII.GetString(decrypted));
+
+                }
+            }
+        }
+
+        public static void SelectFile(out string file)
+        {
+            string mKey = "";
+            var ofd = new OpenFileDialog
+            {
+                InitialDirectory = @"C:\",
+            };
+
+            if (ofd.ShowDialog() == true)
+            {
+                mKey = File.ReadAllText(ofd.FileName);
+            }
+            file = mKey;
         }
     }
 }

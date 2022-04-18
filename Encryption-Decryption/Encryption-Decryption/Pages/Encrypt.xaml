@@ -23,10 +23,6 @@
                         <Button x:Name="btnFile" Height="20"  Width="100"  Click="btnFile_Click" Margin="0,0,20,0">Select File</Button>
                         <Button x:Name="btnEncrypt" Height="20"  Width="100"  Click="btnEncrypt_Click" Margin="20,0,0,0">Encrypt File</Button>
                     </StackPanel>
-                    <ComboBox x:Name="cbxOption" SelectionChanged="cbxOption_SelectionChanged">
-                        <ComboBoxItem IsSelected="True" Content="RSA"/>
-                        <ComboBoxItem Content="AES"/>
-                    </ComboBox>
                 </StackPanel>
             </Border>
         </Grid>

@@ -58,42 +58,30 @@ namespace EncryptionDecryption.Helper
             }
         }
 
-        public static void AESEncryptFile(string aPublicKey, string aPrivateKey, string aFile)
+        public static void AESEncryptFile(string password, byte[] aFile, out byte[] encryptedData)
         {
-            var sfd = new OpenFileDialog()
+            var aes = new AesCryptoServiceProvider();
+            aes.BlockSize = 128;
+            aes.KeySize = 256;
+            var x = Encoding.ASCII.GetBytes(password);
+            aes.IV = x;
+            aes.Key = x;
+            var encryptor = aes.CreateEncryptor(aes.Key, aes.IV);
+            encryptedData = encryptor.TransformFinalBlock(aFile, 0, aFile.Length);
+            var sfd = new SaveFileDialog()
             {
-                CheckFileExists = false,
-                FileName = "EncryptedData",
-                Filter = "XML files(.xml)|*.xml|all Files(*.*)|*.*",
+                FileName = "AESEncryptedData",
             };
-
             if (sfd.ShowDialog() == true)
             {
-                string folderPath = Path.GetFullPath(sfd.FileName);
+                string folderPath = Path.GetDirectoryName(sfd.FileName);
+                string file = Path.Combine(folderPath, "AESEncryptedData.txt");
 
-                using (var fs = new FileStream(@"C:\", FileMode.Create))
+                using (var sw = File.CreateText(file))
                 {
-                    using (var aes = new AesCryptoServiceProvider())
-                    {
-                        aes.IV = Convert.FromBase64String(aPublicKey);
-                        aes.Key = Convert.FromBase64String(aPrivateKey);
-                        var encryptor = aes.CreateEncryptor(aes.Key, aes.IV);
-
-                        using (var cs = new CryptoStream(fs, encryptor, CryptoStreamMode.Write))
-                        {
-                            using (var sw = new StreamWriter(cs))
-                            {
-                                sw.Write(aFile);
-                            }
-                        }
-
-                    }
+                    sw.Write(Convert.ToBase64String(encryptedData));
                 }
             }
-
-          
-
-
         }
 
         public static void SelectKey(out string key)

@@ -27,5 +27,15 @@ namespace EncryptionDecryption
         private void Grid_MouseLeftButtonDown(object sender, MouseButtonEventArgs e) => this.DragMove();
 
         private void ListBoxItem_OnSelected(object sender, RoutedEventArgs e) => frMain.Content = new GenerateKeys();
+
+        private void AESEncrypt_Clicked(object sender, RoutedEventArgs e)
+        {
+            frMain.Content = new AESEncrypt();
+        }
+
+        private void AESDecrypt_Clicked(object sender, RoutedEventArgs e)
+        {
+            frMain.Content = new AESDecrypt();
+        }
     }
 }

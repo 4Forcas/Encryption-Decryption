@@ -1,9 +1,11 @@
-﻿<Page x:Class="EncryptionDecryption.Pages.Decrypt"
+﻿<Page x:Class="EncryptionDecryption.Pages.AESDecrypt"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" Title="Decrypt">
+        xmlns:local="clr-namespace:EncryptionDecryption.Pages"
+        mc:Ignorable="d"
+        Title="AESDecrypt">
     <Grid Background="#131415">
         <Grid.RowDefinitions>
             <RowDefinition Height="150"/>
@@ -18,11 +20,12 @@
             </Grid.ColumnDefinitions>
             <Border CornerRadius="8" Grid.Column="1" Height="150" VerticalAlignment="Center" Background="#1c1d1f">
                 <StackPanel Margin="15">
-                    <TextBlock Foreground="White" Text="Generate RSA Key"/>
+                    <TextBlock Foreground="White" Text="Aes Decrypt"/>
                     <StackPanel Orientation="Horizontal" Height="80" HorizontalAlignment="Left" >
                         <Button x:Name="btnFile" Height="20"  Width="100"  Click="btnFile_Click" Margin="0,0,20,0">Select File</Button>
-                        <Button x:Name="btnDecrypt" Height="20"  Width="100"  Click="btnDecrypt_Click" Margin="20,0,0,0">Decrypt File</Button>
+                        <Button x:Name="btnEncrypt" Height="20"  Width="100"  Click="btnEncrypt_Click" Margin="20,0,0,0">Encrypt File</Button>
                     </StackPanel>
+                    <TextBox x:Name="txtPassword" ToolTip="Enter an password"/>
                 </StackPanel>
             </Border>
         </Grid>
@@ -33,8 +36,8 @@
                 <ColumnDefinition Width="15"/>
             </Grid.ColumnDefinitions>
             <Border CornerRadius="8" Grid.Column="1"  VerticalAlignment="Stretch" Margin="0,20" Background="#1c1d1f">
-              
-                
+
+
                 <StackPanel Margin="20">
                     <TextBlock Foreground="White" Text="Decrypt"/>
                     <TextBlock Margin="0,10" Foreground="Gray" Text="Lorem Ipsum lorem ipsum lorem ipsum"/>
@@ -46,14 +49,14 @@
                         <Grid.RowDefinitions>
                             <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
-                        <TextBlock TextWrapping="Wrap" Margin="0,0,20,0" x:Name="txtEncrypted" Foreground="White" >
+                        <TextBlock x:Name="txtPlain" TextWrapping="Wrap" Margin="0,0,20,0" Foreground="White">
                         </TextBlock>
-                        <TextBlock TextWrapping="Wrap" Margin="20,0,0,0" x:Name="txtDecrypted" Grid.Column="2" Foreground="White">
+                        <TextBlock x:Name="txtEncrypted" TextWrapping="Wrap" Grid.Column="1" Margin="20,0,0,0" Foreground="White">
                         </TextBlock>
                     </Grid>
                 </StackPanel>
-                
-              
+
+
             </Border>
         </Grid>
 
