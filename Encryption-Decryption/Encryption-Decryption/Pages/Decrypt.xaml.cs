@@ -1,7 +1,7 @@
-﻿using System;
+﻿using EncryptionDecryption.Helper;
+using System;
 using System.Windows;
 using System.Windows.Controls;
-using EncryptionDecryption.Helper;
 
 namespace EncryptionDecryption.Pages
 {
@@ -29,5 +29,5 @@ namespace EncryptionDecryption.Pages
             DecryptionHelper.SelectFile(out dataToDecrypt);
             txtEncrypted.Text = String.Join("", dataToDecrypt);
         }
-}
+    }
 }

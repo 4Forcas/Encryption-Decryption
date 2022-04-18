@@ -1,6 +1,6 @@
-﻿using System.Windows;
+﻿using EncryptionDecryption.Helper;
+using System.Windows;
 using System.Windows.Controls;
-using EncryptionDecryption.Helper;
 
 namespace EncryptionDecryption.Pages
 {

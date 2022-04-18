@@ -19,9 +19,13 @@
             <Border CornerRadius="8" Grid.Column="1" Height="150" VerticalAlignment="Center" Background="#1c1d1f">
                 <StackPanel Margin="20">
                     <TextBlock Foreground="White" Text="Generate AES Key"/>
-                    <StackPanel Orientation="Horizontal" Height="80" HorizontalAlignment="Left" >
-                        <Button x:Name="btnFileAES" Height="20"  Width="100"  Click="btnFile_Click" Margin="0,0,20,0">Select File</Button>
-                        <Button x:Name="btnDecryptAES" Height="20"  Width="100"  Click="btnDecrypt_Click" Margin="20,0,0,0">Decrypt File</Button>
+                    <StackPanel Orientation="Horizontal" Height="34" HorizontalAlignment="Left" Width="205" >
+                        <Button x:Name="btnFileAES" Height="20"  Width="205"  Click="btnFile_Click" Margin="0,0,20,0">Select File</Button>
+                        
+                    </StackPanel>
+                    <StackPanel>
+                        <TextBox  Height="24" Text="Password" x:Name="pswdBox" TextChanged="pswdBox_TextChanged"/>
+                        <Button x:Name="btnDecryptAES" Height="20"  Width="205"  Click="btnDecrypt_Click" Margin="0,5,0,0">Decrypt File</Button>
                     </StackPanel>
                 </StackPanel>
             </Border>
@@ -33,8 +37,8 @@
                 <ColumnDefinition Width="15"/>
             </Grid.ColumnDefinitions>
             <Border CornerRadius="8" Grid.Column="1"  VerticalAlignment="Stretch" Margin="0,20" Background="#1c1d1f">
-              
-                
+
+
                 <StackPanel Margin="20">
                     <TextBlock Foreground="White" Text="Decrypt"/>
                     <TextBlock Margin="0,10" Foreground="Gray" Text="Lorem Ipsum lorem ipsum lorem ipsum"/>
@@ -52,8 +56,8 @@
                         </TextBlock>
                     </Grid>
                 </StackPanel>
-                
-              
+
+
             </Border>
         </Grid>
 
