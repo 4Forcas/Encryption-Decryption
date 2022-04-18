@@ -9,6 +9,31 @@ namespace EncryptionDecryption.Helper
 {
     public class DecryptionHelperAES
     {
+        public static void DecryptFile(byte[] data, string key, out string decrypted)
+        {
+            //TODO: Change this to AES
+            decrypted = null;
+            using (var rsa = new RSACryptoServiceProvider())
+            {
+                rsa.ImportRSAPrivateKey(Convert.FromBase64String(key), out int temp);
+                var decryptedData = rsa.Decrypt(data, false);
+                var ofd = new OpenFileDialog
+                {
+                    CheckFileExists = false,
+                    FileName = "Location"
+                };
+                if (ofd.ShowDialog() == true)
+                {
+                    string folderPath = Path.GetDirectoryName(ofd.FileName);
+                    string file = Path.Combine(folderPath, "DecryptedData.txt");
+                    using (var sw = File.CreateText(file))
+                    {
+                        sw.Write(Encoding.Unicode.GetString(decryptedData));
+                        decrypted += Encoding.Unicode.GetString(decryptedData);
+                    }
+                }
+            }
+        }
 
         public static string DecryptString(string key, string cipherText)
         {
