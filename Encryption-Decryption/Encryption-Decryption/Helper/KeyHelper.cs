@@ -18,10 +18,9 @@ namespace EncryptionDecryption.Helper
         {
             aPublicKey = "";
             aPrivateKey = "";
-            var ofd = new OpenFileDialog
+            var ofd = new SaveFileDialog()
             {
-                CheckFileExists = false,
-                FileName = "Location",
+                FileName = "PublicKey",
                 Filter = "txt files (*.txt)|*.txt"
             };
             if (ofd.ShowDialog() == true)

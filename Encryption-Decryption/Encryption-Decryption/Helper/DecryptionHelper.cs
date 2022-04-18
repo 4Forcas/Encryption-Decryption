@@ -16,12 +16,10 @@ namespace EncryptionDecryption.Helper
             {
                 rsa.ImportRSAPrivateKey(Convert.FromBase64String(key), out int temp);
                 var decryptedData = rsa.Decrypt(data, false);
-                var ofd = new OpenFileDialog
+                var ofd = new SaveFileDialog()
                 {
-                    CheckFileExists = false,
-                    FileName = "Location",
-                    Filter = "txt files (*.txt)|*.txt"
-            };
+                    FileName = "DecryptedFile.txt",
+                };
                 if (ofd.ShowDialog() == true)
                 {
                     string folderPath = Path.GetDirectoryName(ofd.FileName);
@@ -42,7 +40,6 @@ namespace EncryptionDecryption.Helper
             var ofd = new OpenFileDialog
             {
                 InitialDirectory = @"C:\",
-                Filter = "txt files (*.txt)|*.txt"
             };
 
             if (ofd.ShowDialog() == true)

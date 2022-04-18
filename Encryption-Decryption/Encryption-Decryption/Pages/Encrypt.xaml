@@ -18,9 +18,10 @@
             </Grid.ColumnDefinitions>
             <Border CornerRadius="8" Grid.Column="1" Height="150" VerticalAlignment="Center" Background="#1c1d1f">
                 <StackPanel Margin="20">
-                    <TextBlock Foreground="White" Text="Generate RSA Key"/>
+                    <TextBlock Foreground="White" Text="Encrypt an file with RSA encryption"/>
                     <StackPanel Orientation="Horizontal" Height="80" HorizontalAlignment="Left" >
                         <Button x:Name="btnFile" Height="20"  Width="100"  Click="btnFile_Click" Margin="0,0,20,0">Select File</Button>
+                        <Button x:Name="btnKey" Height="20"  Width="100"  Click="BtnKey_OnClick" Margin="20,0,0,0">Select Public Key</Button>
                         <Button x:Name="btnEncrypt" Height="20"  Width="100"  Click="btnEncrypt_Click" Margin="20,0,0,0">Encrypt File</Button>
                     </StackPanel>
                 </StackPanel>

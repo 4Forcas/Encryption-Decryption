@@ -9,6 +9,7 @@ namespace EncryptionDecryption.Pages
         byte[] selectedFile;
         string plainText;
         string encryptedData;
+        string key;
 
         public Encrypt()
         {
@@ -22,10 +23,25 @@ namespace EncryptionDecryption.Pages
         }
         void btnEncrypt_Click(object sender, RoutedEventArgs e)
         {
-            string key;
-            EncryptionHelper.SelectKey(out key);
+            if (string.IsNullOrEmpty(key))
+            {
+                MessageBox.Show("Select An key");
+                return;
+            }
+
+            if (selectedFile == null && selectedFile.Length == 0)
+            {
+                MessageBox.Show("Select An File");
+                return;
+            }
+
             EncryptionHelper.EncryptFile(selectedFile, key, out encryptedData);
             txtEncrypted.Text = encryptedData;
+        }
+
+        private void BtnKey_OnClick(object sender, RoutedEventArgs e)
+        {
+            EncryptionHelper.SelectKey(out key);
         }
     }
 }

@@ -19,12 +19,12 @@ namespace EncryptionDecryption.Helper
                 Filter = "txt files (*.txt)|*.txt"
             };
             if (ofd.ShowDialog() == true)
-                using (var sr = new StreamReader(ofd.FileName))
-                {
-                    var byteArr = Encoding.Unicode.GetBytes(sr.ReadToEnd());
-                    data = byteArr;
-                    plain = Encoding.Unicode.GetString(data);
-                }
+            {
+                using var sr = new StreamReader(ofd.FileName);
+                var byteArr = Encoding.Unicode.GetBytes(sr.ReadToEnd());
+                data = byteArr;
+                plain = Encoding.Unicode.GetString(data);
+            }
 
             dataToConvert = data;
         }
@@ -42,7 +42,6 @@ namespace EncryptionDecryption.Helper
                 {
                     CheckFileExists = false,
                     FileName = "Location",
-                    Filter = "txt files (*.txt)|*.txt"
                 };
                 if (ofd.ShowDialog() == true)
                 {
@@ -66,7 +65,6 @@ namespace EncryptionDecryption.Helper
             var ofd = new OpenFileDialog
             {
                 InitialDirectory = @"C:\",
-                Filter = "txt files (*.txt)|*.txt"
             };
 
             if (ofd.ShowDialog() == true)

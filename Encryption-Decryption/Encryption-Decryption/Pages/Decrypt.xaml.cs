@@ -1,7 +1,7 @@
 ﻿using EncryptionDecryption.Helper;
-using System;
 using System.Windows;
 using System.Windows.Controls;
+using static System.String;
 
 namespace EncryptionDecryption.Pages
 {
@@ -9,6 +9,7 @@ namespace EncryptionDecryption.Pages
     {
         public byte[] dataToDecrypt;
         public string decryptedData;
+        string key;
 
         public Decrypt()
         {
@@ -17,17 +18,31 @@ namespace EncryptionDecryption.Pages
 
         void btnDecrypt_Click(object sender, RoutedEventArgs e)
         {
-            string key;
-            DecryptionHelper.SelectKey(out key);
+            if (string.IsNullOrEmpty(key))
+            {
+                MessageBox.Show("Select An key");
+                return;
+            }
+
+            if (dataToDecrypt == null && dataToDecrypt.Length == 0)
+            {
+                MessageBox.Show("Select An File");
+                return;
+            }
+
             DecryptionHelper.DecryptFile(dataToDecrypt, key, out decryptedData);
-            key = "";
             txtDecrypted.Text = decryptedData;
         }
 
         void btnFile_Click(object sender, RoutedEventArgs e)
         {
             DecryptionHelper.SelectFile(out dataToDecrypt);
-            txtEncrypted.Text = String.Join("", dataToDecrypt);
+            txtEncrypted.Text = Join("", dataToDecrypt);
+        }
+
+        private void BtnKey_OnClick(object sender, RoutedEventArgs e)
+        {
+            DecryptionHelper.SelectKey(out key);
         }
     }
 }
