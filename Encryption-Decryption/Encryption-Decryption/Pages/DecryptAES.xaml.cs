@@ -1,7 +1,7 @@
-﻿using System;
+﻿using EncryptionDecryption.Helper;
+using System;
 using System.Windows;
 using System.Windows.Controls;
-using EncryptionDecryption.Helper;
 
 namespace EncryptionDecryption.Pages
 {
@@ -9,8 +9,8 @@ namespace EncryptionDecryption.Pages
     {
         public byte[] dataToDecrypt;
         public string decryptedData;
-
-       
+        public string key;
+        string password;
         public DecryptAES()
         {
             InitializeComponent();
@@ -18,17 +18,18 @@ namespace EncryptionDecryption.Pages
 
         void btnDecrypt_Click(object sender, RoutedEventArgs e)
         {
-            string key;
-            DecryptionHelperAES.SelectKey(out key);
-            DecryptionHelperAES.DecryptFile(dataToDecrypt, key, out decryptedData);
-            key = "";
-            txtDecryptedAES.Text = decryptedData;
+            txtDecryptedAES.Text = EncryptionDecryptionHelperAES.Decrypted(Convert.ToString(key), password);
         }
 
         void btnFile_Click(object sender, RoutedEventArgs e)
         {
-            DecryptionHelperAES.SelectFile(out dataToDecrypt);
-            txtEncryptedAES.Text = String.Join("", dataToDecrypt);
+            DecryptionHelper.SelectKey(out key);
+            txtEncryptedAES.Text = String.Join("", key);
         }
-}
+
+        private void pswdBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            password = pswdBox.Text; ;
+        }
+    }
 }

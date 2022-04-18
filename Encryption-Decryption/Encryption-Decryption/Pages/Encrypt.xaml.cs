@@ -1,6 +1,6 @@
-﻿using System.Windows;
+﻿using EncryptionDecryption.Helper;
+using System.Windows;
 using System.Windows.Controls;
-using EncryptionDecryption.Helper;
 
 namespace EncryptionDecryption.Pages
 {
@@ -24,7 +24,7 @@ namespace EncryptionDecryption.Pages
         {
             string key;
             EncryptionHelper.SelectKey(out key);
-            EncryptionHelper.EncryptFile(selectedFile, key,out encryptedData);
+            EncryptionHelper.EncryptFile(selectedFile, key, out encryptedData);
             txtEncrypted.Text = encryptedData;
         }
     }

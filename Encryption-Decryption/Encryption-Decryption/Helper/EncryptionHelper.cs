@@ -56,6 +56,8 @@ namespace EncryptionDecryption.Helper
             }
         }
 
+
+
         public static void SelectKey(out string key)
         {
             string mKey = "";
