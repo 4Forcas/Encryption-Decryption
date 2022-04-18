@@ -10,7 +10,7 @@ namespace EncryptionDecryption.Helper
     public class DecryptionHelper
     {
 
-        public static void DecryptFile(byte[] data, string key, out string decrypted)
+        public static void RSADecryptFile(byte[] data, string key, out string decrypted)
         {
             decrypted = null;
             using (var rsa = new RSACryptoServiceProvider())
@@ -38,7 +38,7 @@ namespace EncryptionDecryption.Helper
         }
 
 
-        public static void SelectKey(out string key)
+        public static void RSASelectKey(out string key)
         {
             string mKey = "";
             var ofd = new OpenFileDialog
@@ -52,7 +52,7 @@ namespace EncryptionDecryption.Helper
         }
 
 
-        public static void SelectFile(out byte[] dataToConvert)
+        public static void RSASelectFile(out byte[] dataToConvert)
         {
             byte[] data = null;
             var ofd = new OpenFileDialog

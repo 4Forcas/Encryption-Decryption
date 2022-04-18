@@ -6,6 +6,8 @@ namespace EncryptionDecryption.Pages
 {
     public partial class GenerateKeys : Page
     {
+        string EncryptionMethod { get; set; } = "RSA";
+
         public GenerateKeys()
         {
             InitializeComponent();
@@ -13,14 +15,20 @@ namespace EncryptionDecryption.Pages
 
         void btnGenerate_Click(object sender, RoutedEventArgs e)
         {
+
             string publicKey;
             string privateKey;
-
-            KeyHelper.SaveKeys(out publicKey, out privateKey);
+            KeyHelper.RSASaveKeys(out publicKey, out privateKey,EncryptionMethod);
             txtPublicKey.Text = publicKey;
             txtPrivateKey.Text = privateKey;
 
         }
 
+        void cbxOption_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var item = (ComboBoxItem)cbxOption.SelectedItem;
+            if (item.Content != null)
+                EncryptionMethod = item.Content.ToString();
+        }
     }
 }

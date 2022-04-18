@@ -14,7 +14,17 @@ namespace EncryptionDecryption.Helper
             privatekey = Convert.ToBase64String(rsa.ExportRSAPrivateKey());
         }
 
-        public static void SaveKeys(out string aPublicKey, out string aPrivateKey)
+        static void GenerateAESKey(out string publickey, out string privatekey)
+        {
+            var aes = new AesCryptoServiceProvider();
+            aes.GenerateIV();
+            aes.GenerateKey();
+            publickey = Convert.ToBase64String(aes.IV);
+            privatekey = Convert.ToBase64String(aes.Key);
+
+        }
+
+        public static void RSASaveKeys(out string aPublicKey, out string aPrivateKey, string Option)
         {
             aPublicKey = "";
             aPrivateKey = "";
@@ -30,9 +40,18 @@ namespace EncryptionDecryption.Helper
                 string folderPath = Path.GetDirectoryName(sfd.FileName);
                 string publicKeyPath = Path.Combine(folderPath, "publicKey.xml");
                 string privateKeyPath = Path.Combine(folderPath, "privateKey.xml");
-                string publickey;
-                string privatekey;
-                GenerateRSAKey(out publickey, out privatekey);
+                string publickey = "";
+                string privatekey = "";
+                switch (Option)
+                {
+                    case "RSA":
+                        GenerateRSAKey(out publickey, out privatekey);
+                        break;
+                    case "AES":
+                        GenerateAESKey(out publickey, out privatekey);
+                        break;
+                }
+
                 using (var sw = File.CreateText(publicKeyPath))
                     sw.Write(publickey);
                 using (var sw = File.CreateText(privateKeyPath))

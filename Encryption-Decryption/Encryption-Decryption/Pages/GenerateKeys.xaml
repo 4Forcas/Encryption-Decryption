@@ -19,9 +19,15 @@
                 <ColumnDefinition Width="15"/>
             </Grid.ColumnDefinitions>
             <Border CornerRadius="8" Grid.Column="1" Height="120" VerticalAlignment="Center" Background="#1c1d1f">
-                <StackPanel Margin="20">
-                    <TextBlock Foreground="White" Text="Decrypt"/>
-                    <Button x:Name="btnGenerate" Click="btnGenerate_Click">GenerateKeys</Button>
+                <StackPanel Margin="15">
+                    <StackPanel Margin="0,10">
+                        <TextBlock Foreground="White" Text="Decrypt"/>
+                        <Button x:Name="btnGenerate" Click="btnGenerate_Click">GenerateKeys</Button>
+                    </StackPanel>
+                    <ComboBox x:Name="cbxOption" SelectionChanged="cbxOption_SelectionChanged">
+                        <ComboBoxItem IsSelected="True" Content="RSA"/>
+                        <ComboBoxItem Content="AES"/>
+                    </ComboBox>
                 </StackPanel>
             </Border>
         </Grid>

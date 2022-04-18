@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Security.Cryptography;
 using System.Text;
+using System.Xml.Linq;
 using Microsoft.Win32;
 
 namespace EncryptionDecryption.Helper
@@ -28,7 +29,7 @@ namespace EncryptionDecryption.Helper
             dataToConvert = data;
         }
 
-        public static void EncryptFile(byte[] dataToEncrypt, string key, out string encryptedFile)
+        public static void RSAEncryptFile(byte[] dataToEncrypt, string key, out string encryptedFile)
         {
             encryptedFile = "";
             using (var rsa = new RSACryptoServiceProvider())
@@ -55,6 +56,44 @@ namespace EncryptionDecryption.Helper
 
                 }
             }
+        }
+
+        public static void AESEncryptFile(string aPublicKey, string aPrivateKey, string aFile)
+        {
+            var sfd = new OpenFileDialog()
+            {
+                CheckFileExists = false,
+                FileName = "EncryptedData",
+                Filter = "XML files(.xml)|*.xml|all Files(*.*)|*.*",
+            };
+
+            if (sfd.ShowDialog() == true)
+            {
+                string folderPath = Path.GetFullPath(sfd.FileName);
+
+                using (var fs = new FileStream(@"C:\", FileMode.Create))
+                {
+                    using (var aes = new AesCryptoServiceProvider())
+                    {
+                        aes.IV = Convert.FromBase64String(aPublicKey);
+                        aes.Key = Convert.FromBase64String(aPrivateKey);
+                        var encryptor = aes.CreateEncryptor(aes.Key, aes.IV);
+
+                        using (var cs = new CryptoStream(fs, encryptor, CryptoStreamMode.Write))
+                        {
+                            using (var sw = new StreamWriter(cs))
+                            {
+                                sw.Write(aFile);
+                            }
+                        }
+
+                    }
+                }
+            }
+
+          
+
+
         }
 
         public static void SelectKey(out string key)

@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Controls;
 using EncryptionDecryption.Helper;
 
@@ -10,6 +11,8 @@ namespace EncryptionDecryption.Pages
         string plainText;
         string encryptedData;
 
+        string EncryptionMethod { get; set; } = "RSA";
+
         public Encrypt()
         {
             InitializeComponent();
@@ -17,15 +20,50 @@ namespace EncryptionDecryption.Pages
 
         void btnFile_Click(object sender, RoutedEventArgs e)
         {
-            EncryptionHelper.SelectFile(out selectedFile, out plainText);
+            switch (EncryptionMethod)
+            {
+                case "RSA":
+                    EncryptionHelper.SelectFile(out selectedFile, out plainText);
+                    break;
+                case "AES":
+                    EncryptionHelper.SelectFile(out selectedFile,out plainText);
+                    break;
+                default:
+
+                    break;
+            }
+
             txtPlain.Text = plainText;
         }
         void btnEncrypt_Click(object sender, RoutedEventArgs e)
         {
             string key;
-            EncryptionHelper.SelectKey(out key);
-            EncryptionHelper.EncryptFile(selectedFile, key,out encryptedData);
+            string pKey;
+            switch (EncryptionMethod)
+            {
+                case "RSA":
+                    EncryptionHelper.SelectKey(out key);
+                    EncryptionHelper.RSAEncryptFile(selectedFile, key, out encryptedData);
+                    break;
+                case "AES":
+                    EncryptionHelper.SelectKey(out pKey);
+                    EncryptionHelper.SelectKey(out key);
+                    EncryptionHelper.AESEncryptFile(pKey, key, Convert.ToBase64String(selectedFile));
+                    break;
+                default:
+                 
+                    break;
+            }
+
+
             txtEncrypted.Text = encryptedData;
+        }
+
+        void cbxOption_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var item = (ComboBoxItem)cbxOption.SelectedItem;
+            if (item.Content != null)
+                EncryptionMethod = item.Content.ToString();
         }
     }
 }
